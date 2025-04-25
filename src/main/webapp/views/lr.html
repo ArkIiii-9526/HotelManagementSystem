@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="index" content="width=device-width, initial-scale=1.0">
+    <title>纷蓝</title>
+    <link rel="stylesheet" href="../CSS/framework.css">
+    <link rel="stylesheet" href="../CSS/index.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+<!-- NAVBAR CREATION -->
+<header class="header">
+    <h1>纷蓝酒店管理系统</h1>
+    <nav class="navbar">
+        <a href="#">主页</a>
+        <a href="#">关于我们</a>
+        <a href="#">联系方式</a>
+        <a href="#">帮助</a>
+    </nav>
+</header>
+<!-- LOGIN FORM CREATION -->
+<div class="background"></div>
+<div class="container">
+    <div class="item">
+        <h2 class="logo"><i class='bx bxl-xing'></i>Colorful Blue</h2>
+        <div class="text-item">
+            <h2>Welcome! <br><span>
+                    To Use Our System~
+                </span></h2>
+            <p>我们志在创建一个灵活的，面向大众的酒店管理系统</p>
+            <div class="social-icon">
+                <a href="#"><i class='bx bxl-facebook'></i></a>
+                <a href="#"><i class='bx bxl-twitter'></i></a>
+                <a href="#"><i class='bx bxl-youtube'></i></a>
+                <a href="#"><i class='bx bxl-instagram'></i></a>
+                <a href="#"><i class='bx bxl-linkedin'></i></a>
+            </div>
+        </div>
+    </div>
+    <div class="login-section">
+        <div class="form-box login">
+            <form action="/login" method="post" id="login">
+                <h2>登录</h2>
+                <div class="input-box">
+                    <span class="icon"><i class='bx bxs-envelope'></i></span>
+                    <input type="email" name="loginEmail" id="loginEmail" required>
+                    <label>邮箱</label>
+                </div>
+                <div class="error-message" id="loginEmailError"></div>
+                <div class="input-box">
+                    <span class="icon"><i class='bx bxs-lock-alt'></i></span>
+                    <input type="password" name="loginPassword" id="loginPassword" required>
+                    <label>密码</label>
+                </div>
+                <div class="error-message" id="loginPasswordError"></div>
+                <div class="remember-password">
+                    <label><input type="checkbox">记住我</label>
+                    <a href="#">忘记密码？立即找回！</a>
+                </div>
+                <button class="btn" type="submit">登录</button>
+                <div class="create-account">
+                    <p>想要创建一个账户？<a href="#" class="register-link"> 去注册 </a></p>
+                </div>
+            </form>
+        </div>
+        <div class="form-box register">
+            <form action="/register" method="post" id="register">
+
+                <h2>注册</h2>
+
+                <div class="input-box">
+                    <span class="icon"><i class='bx bxs-user'></i></span>
+                    <input type="text" name="username" id="username" required>
+                    <label>用户名</label>
+                </div>
+                    <div class="error-message" id="nameError"></div>
+                <div class="input-box">
+                    <span class="icon"><i class='bx bxs-envelope'></i></span>
+                    <input type="email" name="email" id="email" required>
+                    <label>邮箱</label>
+                </div>
+                    <div class="error-message" id="emailError"></div>
+                <div class="input-box">
+                    <span class="icon"><i class='bx bxs-lock-alt'></i></span>
+                    <input type="password" name="password" id="password" required>
+                    <label>密码</label>
+                </div>
+                    <div class="error-message" id="passwordError"></div>
+                <div class="remember-password">
+                    <label><input type="checkbox">我已同意此<a href="#">协议</a></label>
+                </div>
+                <button class="btn" type="submit">注册</button>
+                <div class="create-account">
+                    <p>已有账户？ <a href="#" class="login-link"> 去登录</a></p>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- SIGN UP FORM CREATION -->
+
+<script src="../JS/change.js"></script>
+<script src="../JS/verify.js"></script>
+<script src="../JS/vue.js"></script>
+<script src="../JS/axios.js"></script>）
+</body>
+
+</html>

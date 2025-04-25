@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.system.mapper.CustomerMapper">
+
+    <select id="selectPageCustomer" resultType="com.system.pojo.Customer">
+        SELECT name, age, sex, phone, idcard
+        FROM (
+        SELECT temp.*, ROWNUM rn
+        FROM (
+        SELECT *
+        FROM CUSTOMER
+        ORDER BY NAME
+        ) temp
+        WHERE ROWNUM &lt;= #{end}
+        )
+        WHERE rn &gt;= #{start}
+    </select>
+
+    <select id="selectCustomerByName" resultType="com.system.pojo.Customer">
+        SELECT * FROM CUSTOMER WHERE NAME = #{NAME}
+    </select>
+
+    <select id="selectCustomerByIdCard" resultType="com.system.pojo.Customer">
+        SELECT * FROM CUSTOMER WHERE IDCARD = #{IDCARD}
+    </select>
+
+    <insert id="insertCustomer" parameterType="com.system.pojo.Customer">
+        INSERT INTO CUSTOMER (name, age, sex, phone, idCard) VALUES (#{name}, #{age}, #{sex}, #{phone},#{idCard})
+    </insert>
+
+    <update id="updateCustomer" parameterType="com.system.pojo.Customer">
+        UPDATE CUSTOMER SET name = #{name}, age = #{age}, sex = #{sex}, phone = #{phone} WHERE idCard = #{idCard}
+    </update>
+
+    <delete id="deleteCustomer" parameterType="com.system.pojo.Customer">
+        DELETE FROM CUSTOMER WHERE idCard = #{idCard}
+    </delete>
+
+    <select id="CountCustomer" parameterType="com.system.pojo.Customer">
+        SELECT COUNT(*) FROM CUSTOMER
+    </select>
+
+    <select id="CountCustomerByName" parameterType="com.system.pojo.Customer">
+        SELECT COUNT(*) FROM CUSTOMER where NAME = #{name}
+    </select>
+
+    <select id="isCustomerExist" parameterType="com.system.pojo.Customer">
+        SELECT COUNT(*) FROM CUSTOMER WHERE idCard = #{idCard}
+    </select>
+</mapper>
