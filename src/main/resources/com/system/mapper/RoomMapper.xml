@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.system.mapper.RoomMapper">
+    <select id="selectPageRoom" resultType="com.system.pojo.Room">
+        SELECT roomid, roomtype, price, status
+        FROM (
+            SELECT temp.*, ROWNUM rn
+            FROM (
+                SELECT *
+                FROM ROOM
+                ORDER BY roomid
+            ) temp
+            WHERE ROWNUM &lt;= #{end}
+        )
+        WHERE rn &gt;= #{start}
+    </select>
+
+    <select id="selectRoomById" resultType="com.system.pojo.Room">
+        SELECT * FROM ROOM WHERE roomid = #{roomId}
+    </select>
+
+    <insert id="insertRoom" parameterType="com.system.pojo.Room">
+        INSERT INTO ROOM (roomid, roomtype, price, status)
+        VALUES (#{roomId}, #{roomType}, #{price}, #{status})
+    </insert>
+
+    <update id="updateRoom" parameterType="com.system.pojo.Room">
+        UPDATE ROOM
+        SET roomtype = #{roomType}, price = #{price}, status = #{status}
+        WHERE roomid = #{roomId}
+    </update>
+
+    <delete id="deleteRoom" parameterType="string">
+        DELETE FROM ROOM WHERE roomid = #{roomId}
+    </delete>
+
+    <select id="countRooms" resultType="long">
+        SELECT COUNT(*) FROM ROOM
+    </select>
+
+    <select id="isRoomExist" resultType="int">
+        SELECT COUNT(*) FROM ROOM WHERE roomid = #{roomId}
+    </select>
+</mapper>
